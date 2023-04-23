@@ -1,2 +1,2 @@
 # Repo Info
-This is ALX SWE printf repo
+This is ALX SWE printf repository
