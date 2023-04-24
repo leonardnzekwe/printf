@@ -17,6 +17,10 @@ int _printf(const char *format, ...)
 	{
 		count = print_fmt(format, args, &count);
 	}
+	else
+	{
+		return (-1);
+	}
 	va_end(args);
 	return (count);
 }
