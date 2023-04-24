@@ -10,7 +10,7 @@ int _printf(const char *format, ...)
 {
 	va_list args;
 	int i, j, count;
-	
+
 	fmt fmt_specs[] = {
 		{'c', char_print},
 		{'s', string_print},
@@ -24,36 +24,26 @@ int _printf(const char *format, ...)
 		for (i = 0; format[i] != '\0'; i++)
 		{
 			if (format[i] != '%')
-			{
 				_putchar(format[i]);
 				count++;
-			}
 			else
-			{
 				i++;
 				for (j = 0; fmt_specs[j].fmt_sign != '\0'; j++)
 				{
 					if (format[i] == '%')
-					{
 						_putchar(format[i]);
 						count++;
 						break;
-					}
 					else if (format[i] == (fmt_specs[j]).fmt_sign)
-					{
-							(fmt_specs[j]).fmt_func_ptr(args);
-							count++;
-							break;
-					}
-					else if (fmt_specs[j+1].fmt_sign == '\0')
-					{
+						(fmt_specs[j]).fmt_func_ptr(args);
+						count++;
+						break;
+					else if (fmt_specs[j + 1].fmt_sign == '\0')
 						_putchar('%');
 						_putchar(format[i]);
 						count += 2;
 						break;
-					}
 				}
-			}
 		}
 	}
 	va_end(args);

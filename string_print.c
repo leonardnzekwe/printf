@@ -21,7 +21,6 @@ void string_print(va_list s)
 		}
 		return;
 	}
-	
 	for (i = 0; string[i] != '\0'; i++)
 	{
 		_putchar(string[i]);
