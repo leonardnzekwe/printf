@@ -41,7 +41,8 @@ int _printf(const char *format, ...)
 int print_fmt(const char *format, va_list args, int *count, int *num_args)
 {
 	int i, j;
-	fmt fmt_specs[] = {{'c', char_print}, {'s', string_print}, {'\0', NULL}};
+	fmt fmt_specs[] = {{'c', char_print}, {'s', string_print},
+	{'d', dec_print}, {'i', int_print}, {'\0', NULL}};
 
 	for (i = 0; format[i] != '\0'; i++)
 	{
