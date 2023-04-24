@@ -13,7 +13,7 @@ void char_print(va_list args, int *count)
 	char c;
 
 	c = va_arg(args, int);
-	if (c == 0)
+	if (c == '\0')
 	{
 		return;
 	}
