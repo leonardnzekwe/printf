@@ -36,24 +36,24 @@ int _printf(const char *format, ...)
 int print_fmt(const char *format, va_list args, int *count)
 {
 	int i, j;
+	fmt fmt_specs[] = {{'c', char_print}, {'s', string_print}, {'\0', NULL}};
 
-	fmt fmt_specs[] = {
-		{'c', char_print},
-		{'s', string_print},
-		{'\0', NULL}
-	}; /* fmt two dimensional array variable */
 	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] != '%') /* check for fmt spec */
-		{
-			_putchar(format[i]);
-			(*count)++;
-		}
+		{ _putchar(format[i]);
+			(*count)++; }
 		else /* start fmt spec */
 		{
 			i++; /* increment to next character after the % */
 			for (j = 0; fmt_specs[j].fmt_sign != '\0'; j++)
 			{
+				if (format[i] == '\0') /* check if % is last character */
+				{
+					_putchar(format[i]);
+					(*count)++;
+					return (-1);
+				}
 				if (format[i] == '%') /* print a percent sign */
 				{
 					_putchar(format[i]);

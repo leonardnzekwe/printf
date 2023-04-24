@@ -71,5 +71,7 @@ printf("--------------Tests----------------\n");
 	_printf("Null: %c\n", NULL);
 	printf("Null: %c\n", NULL);
 	printf("--------------End----------------\n");
+	_printf("Last egde case\n%", NULL);
+	printf("Last egde case\n%", NULL);
 	return (0);
 }
