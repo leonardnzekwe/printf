@@ -67,6 +67,9 @@ printf("--------------Tests----------------\n");
 	printf("------------------------------\n");
 	_printf("Null: %s\n", NULL);
 	printf("Null: %s\n", NULL);
+	printf("------------------------------\n");
+	_printf("Null: %c\n", NULL);
+	printf("Null: %c\n", NULL);
 	printf("--------------End----------------\n");
 	return (0);
 }
