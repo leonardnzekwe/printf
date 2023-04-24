@@ -9,13 +9,17 @@
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int count;
+	int count, num_args;
 
 	count = 0;
+	num_args = 0;
 	va_start(args, format);
 	if (format != NULL)
 	{
-		count = print_fmt(format, args, &count);
+		if (print_fmt(format, args, &count, &num_args) != -1)
+		{
+			count = count;
+		}
 	}
 	else
 	{
@@ -30,10 +34,11 @@ int _printf(const char *format, ...)
  * @format: named parameter specification of format
  * @args: variable arguments list
  * @count: pointer to integer to store the count of characters printed
+ * @num_args: number of argument passed to the variadic function
  * Return: the number of characters printed
  */
 
-int print_fmt(const char *format, va_list args, int *count)
+int print_fmt(const char *format, va_list args, int *count, int *num_args)
 {
 	int i, j;
 	fmt fmt_specs[] = {{'c', char_print}, {'s', string_print}, {'\0', NULL}};
@@ -52,27 +57,27 @@ int print_fmt(const char *format, va_list args, int *count)
 				{
 					_putchar(format[i]);
 					(*count)++;
-					return (-1);
-				}
+					return (-1); }
 				if (format[i] == '%') /* print a percent sign */
 				{
 					_putchar(format[i]);
 					(*count)++;
-					break;
-				}
+					break; }
 				else if (format[i] == (fmt_specs[j]).fmt_sign) /* valid fmt handling */
 				{
+					(*num_args)++; /* increment num_args when a valid fmt spec is found */
 					(fmt_specs[j]).fmt_func_ptr(args, count);
-					break;
-				}
+					break; }
 				else if (fmt_specs[j + 1].fmt_sign == '\0') /* invalid fmt handling */
 				{
 					_putchar('%');
 					_putchar(format[i]);
 					(*count) += 2;
-					break;
-				}
+					break; }
 			}
 		}
-	} return (*count);
+	}
+	if (*num_args != va_arg(args, int))
+		return (-1);
+	return (*count);
 }

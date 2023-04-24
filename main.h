@@ -18,7 +18,7 @@ typedef struct format_specifier
 /* Prototypes */
 int _putchar(char c);
 int _printf(const char *format, ...);
-int print_fmt(const char *format, va_list args, int *count);
+int print_fmt(const char *format, va_list args, int *count, int *num_args);
 void char_print(va_list args, int *count);
 void string_print(va_list args, int *count);
 
