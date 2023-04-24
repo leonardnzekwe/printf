@@ -2,11 +2,17 @@
 
 /**
  * char_print - character printing
- * @c: int parameter to print
- * char is promoted to int when passed to elipses
+ * @args: variable arguments list
+ * @count: pointer to integer to store the count of characters printed
+ * c - int parameter to print promoted from char
+ * char is promoted to int when passed to the elipses
  */
 
-void char_print(va_list c)
+void char_print(va_list args, int *count)
 {
-	_putchar(va_arg(c, int));
+	char c;
+
+	c = va_arg(args, int);
+	_putchar(c);
+	(*count)++;
 }

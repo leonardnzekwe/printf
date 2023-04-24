@@ -12,13 +12,14 @@
 typedef struct format_specifier
 {
 	char fmt_sign;
-	void (*fmt_func_ptr)(va_list);
+	void (*fmt_func_ptr)(va_list, int *);
 } fmt;
 
 /* Prototypes */
 int _putchar(char c);
 int _printf(const char *format, ...);
-void char_print(va_list c);
-void string_print(va_list s);
+int print_fmt(const char *format, va_list args, int *count);
+void char_print(va_list args, int *count);
+void string_print(va_list args, int *count);
 
 #endif /* MAIN_H */
