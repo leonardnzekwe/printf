@@ -54,23 +54,19 @@ int print_fmt(const char *format, va_list args, int *count, int *num_args)
 			for (j = 0; fmt_specs[j].fmt_sign != '\0'; j++)
 			{
 				if (format[i] == '\0') /* check if % is last character */
-				{
-					_putchar(format[i]);
+				{ _putchar(format[i]);
 					(*count)++;
 					return (-1); }
 				if (format[i] == '%') /* print a percent sign */
-				{
-					_putchar(format[i]);
+				{ _putchar(format[i]);
 					(*count)++;
 					break; }
 				else if (format[i] == (fmt_specs[j]).fmt_sign) /* valid fmt handling */
-				{
-					(*num_args)++; /* increment num_args when a valid fmt spec is found */
+				{ (*num_args)++; /* increment num_args when a valid fmt spec is found */
 					(fmt_specs[j]).fmt_func_ptr(args, count);
 					break; }
 				else if (fmt_specs[j + 1].fmt_sign == '\0') /* invalid fmt handling */
-				{
-					_putchar('%');
+				{ _putchar('%');
 					_putchar(format[i]);
 					(*count) += 2;
 					break; }
