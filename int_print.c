@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * int_print - prints an integer
+ * int_print - prints an int
  * @args: variable argument list
  * @count: pointer to integer to store the count of characters printed
  */
