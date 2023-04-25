@@ -2,7 +2,7 @@
 
 /**
  * int_print - prints an int
- * @args: var argument list
+ * @args: var arg list
  * @count: pointer to integer to store the count of characters printed
  */
 
