@@ -2,7 +2,7 @@
 
 /**
  * dec_print - prints a num integer
- * @args: variable argument
+ * @args: var argument
  * @count: ptr to int to store the count of char printed
  */
 
