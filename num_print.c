@@ -61,3 +61,15 @@ void dec_print(va_list args, int *count)
     }
     free(digits);
 }
+
+/**
+ * int_print - integer printing function
+ * @args: variable argument list
+ * @count: pointer to integer to store the count of characters printed
+ * i - integer (int) parameter to print
+ */
+
+void int_print(va_list args, int *count)
+{
+    dec_print(args, count);
+}
