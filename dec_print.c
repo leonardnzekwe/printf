@@ -2,7 +2,7 @@
 
 /**
  * dec_print - prints a number integer
- * @args: variable argument list
+ * @args: variable argument
  * @count: pointer to int to store the count of char printed
  */
 
