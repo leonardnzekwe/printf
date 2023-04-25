@@ -3,7 +3,7 @@
 /**
  * dec_print - prints a number integer
  * @args: variable argument list
- * @count: pointer to integer to store the count of characters printed
+ * @count: pointer to int to store the count of characters printed
  */
 
 void dec_print(va_list args, int *count)
