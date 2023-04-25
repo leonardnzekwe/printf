@@ -1,5 +1,12 @@
 #include "main.h"
 
+/**
+ * dec_print - decimal (base 10) printing function
+ * @args: variable argument list
+ * @count: pointer to integer to store the count of characters printed
+ * d - decimal (int) parameter passed
+ */
+
 void dec_print(va_list args, int *count)
 {
     int d, i, j, d_len;
