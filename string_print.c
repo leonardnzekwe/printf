@@ -10,16 +10,23 @@
 void string_print(va_list args, int *count)
 {
 	char *s;
+	char *null;
+	int i, j;
 
+	null = "(null)";
 	s = va_arg(args, char *);
 	if (s == NULL)
 	{
-		s = "(null)";
+		for (j = 0; null[j] != '\0'; j++)
+		{
+			_putchar(null[j]);
+			(*count)++;
+		}
+		return;
 	}
-	while (*s)
+	for (i = 0; s[i] != '\0'; i++)
 	{
-		_putchar(*s);
+		_putchar(s[i]);
 		(*count)++;
-		s++;
 	}
 }
