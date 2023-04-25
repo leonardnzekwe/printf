@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * dec_print - prints a decimal integer
+ * dec_print - prints a number integer
  * @args: variable argument list
  * @count: pointer to integer to store the count of characters printed
  */
