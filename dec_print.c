@@ -15,7 +15,7 @@ void dec_print(va_list args, int *count)
 	{
 		_putchar('-');
 		*count += 1;
-		num = -n;
+		num = n * -1;
 	}
 	else
 	{
