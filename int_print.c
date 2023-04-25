@@ -3,7 +3,7 @@
 /**
  * int_print - prints an int
  * @args: var arg
- * @count: ptr to integer to store the count of characters printed
+ * @count: ptr to int to store the count of characters printed
  */
 
 void int_print(va_list args, int *count)
