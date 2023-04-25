@@ -9,7 +9,7 @@
 void dec_print(va_list args, int *count)
 {
 	int n, num;
-	
+
 	n = va_arg(args, int);
 	if (n < 0)
 	{
