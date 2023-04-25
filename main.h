@@ -24,5 +24,6 @@ void char_print(va_list args, int *count);
 void string_print(va_list args, int *count);
 void int_print(va_list args, int *count);
 void dec_print(va_list args, int *count);
+void bin_print(va_list args, int *count);
 
 #endif /* MAIN_H */
