@@ -53,14 +53,13 @@ int print_fmt(const char *format, va_list args, int *count, int *num_args)
 		else /* start fmt spec */
 		{
 			i++; /* increment to next character after the % */
-			if (format[i] == '\0') /* check for standalone % */
-				return (-1);
-			for (j = 0; fmt_specs[j].fmt_sign != '\0'; j++)
-			{
-				if (format[i] == '\0') /* check if % is last character */
-				{ _putchar(format[i]);
+			/* check for standalone % and if % is the last character*/
+			if (format[i] == '\0')
+				{ _putchar(format[i - 1]);
 					(*count)++;
 					return (-1); }
+			for (j = 0; fmt_specs[j].fmt_sign != '\0'; j++)
+			{
 				if (format[i] == '%') /* print a percent sign */
 				{ _putchar(format[i]);
 					(*count)++;
