@@ -31,5 +31,6 @@ void hex_print(va_list args, int *count);
 void cap_hex_print(va_list args, int *count);
 void str_hex_print(va_list args, int *count);
 void ptr_print(va_list args, int *count);
+void zero(char *nil, int *count);
 
 #endif /* MAIN_H */

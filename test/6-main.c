@@ -40,5 +40,21 @@ int main(void)
     printf("Len:[%d]\n", len2);
     _printf("Unknown:[%r]\n");
     printf("Unknown:[%r]\n");
+    printf("---------------------\n");
+    len = _printf("Can you print several addresses?\n%p,%p,%p,%p\nNice!\n", (void *)0x7fff5100b6f8, (void *)0x7faf51f0f608, (void *)0x6ff42510b6f8, (void *)0x7fff510236f8);
+    len2 = printf("Can you print several addresses?\n%p,%p,%p,%p\nNice!\n", (void *)0x7fff5100b6f8, (void *)0x7faf51f0f608, (void *)0x6ff42510b6f8, (void *)0x7fff510236f8);
+    _printf("Len:[%d]\n", len);
+    printf("Len:[%d]\n", len2);
+    printf("---------------------\n");
+    len = _printf("Can you print an address?\n%p\nNice!\n", (void *)0x7fff5100b6f8);
+    len2 = printf("Can you print an address?\n%p\nNice!\n", (void *)0x7fff5100b6f8);
+    _printf("Len:[%d]\n", len);
+    printf("Len:[%d]\n", len2);
+    printf("---------------------\n");
+    len = _printf("%p\n", NULL);
+    len2 = printf("%p\n", NULL);
+    _printf("Len:[%d]\n", len);
+    printf("Len:[%d]\n", len2);
+    printf("---------------------\n");
     return (0);
 }
