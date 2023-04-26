@@ -55,7 +55,7 @@ int print_fmt(const char *format, va_list args, int *count, int *num_args)
 			i++; /* increment to next character after the % */
 			/* check for standalone % and if % is the last character*/
 			if (format[i] == '\0')
-				{ _putchar(format[i - 1]);
+				{ _putchar(format[i - 2]);
 					(*count)++;
 					return (-1); }
 			for (j = 0; fmt_specs[j].fmt_sign != '\0'; j++)
