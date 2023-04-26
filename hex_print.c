@@ -4,7 +4,7 @@
  * hex_print - hexadecimal (base 16) printing function (lowercase)
  * @args: variable argument list
  * @count: pointer to integer to store the count of characters printed
- * x - hexadecimal (unsigned int) parameter passed
+ * hex - hexadecimal (unsigned int) parameter passed
  */
 
 void hex_print(va_list args, int *count)
