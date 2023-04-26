@@ -29,10 +29,6 @@ void str_hex_print(va_list args, int *count)
 				_putchar('0');
 				_printf("%X", str[i]);
 			}
-			else
-			{
-				_printf("%X", str[i]);
-			}
 			(*count) += 4;
 		}
 		else
