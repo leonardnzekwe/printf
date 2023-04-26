@@ -70,8 +70,11 @@ printf("--------------Tests----------------\n");
 	printf("------------------------------\n");
 	_printf("Null: %c\n", NULL);
 	printf("Null: %c\n", NULL);
-	printf("--------------End----------------\n");
 	_printf("Last egde case\n%", NULL);
 	printf("Last egde case\n%", NULL);
+	printf("-----------Checker Case----------------\n");
+	_printf("%");
+	printf("%");
+	printf("--------------End----------------\n");
 	return (0);
 }
