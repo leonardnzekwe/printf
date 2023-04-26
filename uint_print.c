@@ -4,10 +4,11 @@
  * uint_print - unsigned integer printing function
  * @args: variable argument list
  * @count: pointer to integer to store the count of characters printed
+ * @flag: flag characters for non-custom conversion specifiers
  * u - unsigned integer (unsigned int) parameter to print
  */
 
-void uint_print(va_list args, int *count)
+void uint_print(va_list args, int *count, char __attribute__ ((unused)) flag)
 {
 	unsigned int u, i, u_len, num;
 	int j;

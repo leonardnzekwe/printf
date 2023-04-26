@@ -4,10 +4,11 @@
  * bin_print - decimal (base 10) printing function
  *  @args: variable argument list
  *  @count: pointer to integer to store the count of characters printed
+ *	@flag: flag characters for non-custom conversion specifiers
  *  b - binary (unsigned int) parameter passed
  */
 
-void bin_print(va_list args, int *count)
+void bin_print(va_list args, int *count, char __attribute__ ((unused)) flag)
 {
 	unsigned int b, i, b_len, num;
 	int j;

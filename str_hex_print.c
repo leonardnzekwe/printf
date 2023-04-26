@@ -5,10 +5,12 @@
  * With non-printable characters as hexadecimal (uppercase)
  * @args: variadic arguments list
  * @count: pointer to the count of printed characters
+ * @flag: flag characters for non-custom conversion specifiers
  * str - string (char *) parameter passed
  */
 
-void str_hex_print(va_list args, int *count)
+void str_hex_print(va_list args,
+	int *count, char __attribute__ ((unused)) flag)
 {
 	char *str;
 	int i;

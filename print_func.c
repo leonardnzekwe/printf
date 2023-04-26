@@ -10,13 +10,18 @@ int _printf(const char *format, ...)
 {
 	va_list args;
 	int count, num_args;
+	/* struct two dimensional array */
+	fmt fmt_specs[] = {{'c', char_print}, {'s', string_print}, {'d', dec_print},
+	{'i', int_print}, {'b', bin_print}, {'u', uint_print}, {'o', oct_print},
+	{'x', hex_print}, {'X', cap_hex_print}, {'S', str_hex_print},
+	{'p', ptr_print}, {'\0', NULL}};
 
 	count = 0;
 	num_args = 0;
 	va_start(args, format);
 	if (format != NULL)
 	{
-		if (print_fmt(format, args, &count, &num_args) != -1)
+		if (print_fmt(format, args, &count, &num_args, fmt_specs) != -1)
 		{
 			count = count;
 		}
@@ -35,16 +40,15 @@ int _printf(const char *format, ...)
  * @args: variable arguments list
  * @count: pointer to integer to store the count of characters printed
  * @num_args: number of argument passed to the variadic function
+ * @fmt_specs: struct two dimensional array, typedefed to fmt
  * Return: the number of characters printed
  */
 
-int print_fmt(const char *format, va_list args, int *count, int *num_args)
+int print_fmt(const char *format,
+	va_list args, int *count, int *num_args, fmt fmt_specs[])
 {
 	int i, j;
-	fmt fmt_specs[] = {{'c', char_print}, {'s', string_print}, {'d', dec_print},
-	{'i', int_print}, {'b', bin_print}, {'u', uint_print}, {'o', oct_print},
-	{'x', hex_print}, {'X', cap_hex_print}, {'S', str_hex_print},
-	{'p', ptr_print}, {'\0', NULL}};
+	char flag = '\0';
 
 	for (i = 0; format[i] != '\0'; i++)
 	{
@@ -52,12 +56,16 @@ int print_fmt(const char *format, va_list args, int *count, int *num_args)
 		{ _putchar(format[i]);
 			(*count)++; }
 		else /* start fmt spec */
-		{
-			i++; /* increment to next character after the % */
+		{ i++; /* increment to next character after the % */
 			/* check for standalone % and if % is the last character*/
 			if (format[i] == '\0')
 				{ (*count) = -1;
 					return (-1); }
+			/* check for flag characters */
+			if (format[i] == '+' || format[i] == ' ' || format[i] == '#')
+			{ flag = format[i];
+				i++; }
+			/* search for corresponding conversion specifier */
 			for (j = 0; fmt_specs[j].fmt_sign != '\0'; j++)
 			{
 				if (format[i] == '%') /* print a percent sign */
@@ -66,7 +74,7 @@ int print_fmt(const char *format, va_list args, int *count, int *num_args)
 					break; }
 				else if (format[i] == (fmt_specs[j]).fmt_sign) /* valid fmt handling */
 				{ (*num_args)++; /* increment num_args when a valid fmt spec is found */
-					(fmt_specs[j]).fmt_func_ptr(args, count);
+					(fmt_specs[j]).fmt_func_ptr(args, count, flag);
 					break; }
 				else if (fmt_specs[j + 1].fmt_sign == '\0') /* invalid fmt handling */
 				{ _putchar('%');

@@ -4,10 +4,11 @@
  * oct_print - unsigned integer printing function in octal format
  * @args: variable argument list
  * @count: pointer to integer to store the count of characters printed
+ * @flag: flag characters for non-custom conversion specifiers
  * o - unsigned integer (unsigned int) parameter to print in octal format
  */
 
-void oct_print(va_list args, int *count)
+void oct_print(va_list args, int *count, char flag)
 {
 	unsigned int o, i, o_len, num;
 	int j;
@@ -36,6 +37,9 @@ void oct_print(va_list args, int *count)
 		i++;
 	}
 	digits[i] = (num % 8) + '0';
+	if (flag == '#')
+	{ _putchar('0');
+		(*count)++; }
 	/* print digits in reverse order */
 	for (j = i; j >= 0; j--)
 	{

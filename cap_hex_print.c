@@ -4,10 +4,11 @@
  * cap_hex_print - hexadecimal (base 16) printing function (uppercase)
  * @args: variable argument list
  * @count: pointer to integer to store the count of characters printed
+ * @flag: flag characters for non-custom conversion specifiers
  * cap_hex - cap_hexadecimal (unsigned int) parameter passed
  */
 
-void cap_hex_print(va_list args, int *count)
+void cap_hex_print(va_list args, int *count, char flag)
 {
 	unsigned int cap_hex, i, cap_hex_len, num;
 	int j;
@@ -37,6 +38,10 @@ void cap_hex_print(va_list args, int *count)
 		i++;
 	}
 	cap_hex_str[i] = cap_hex_digits[num % 16];
+	if (flag == '#')
+	{ _putchar('0');
+		_putchar('X');
+		(*count) += 2; }
 	/* print digits in reverse order */
 	for (j = i; j >= 0; j--)
 	{
