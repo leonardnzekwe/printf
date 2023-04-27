@@ -56,8 +56,8 @@ int main(void)
     _printf("Len:[%d]\n", len);
     printf("Len:[%d]\n", len2);
     printf("---------------\n");
-    len = _printf("% |\n"); _printf("% % % % |\n");
-    len2 = printf("% |\n"); printf("% % % % |\n");
+    len = _printf("% "); _printf("% % % % ");
+    len2 = printf("% "); printf("% % % % ");
     _printf("Len:[%d]\n", len);
     printf("Len:[%d]\n", len2);
     printf("---------------\n");
@@ -78,8 +78,12 @@ int main(void)
     len2 = printf("%#o\n", 1024);
     _printf("Len:[%d]\n", len);
     printf("Len:[%d]\n", len2);
-    len = _printf("% +d + %+ d = % +i\n", INT_MIN, INT_MAX, (INT_MIN + INT_MAX));
-    len2 = _printf("% +i + %+ i = % +d\n", INT_MIN, INT_MAX, (INT_MIN + INT_MAX));
+    len = _printf("% +d + %+ d = % +d\n", INT_MIN, INT_MAX, (INT_MIN + INT_MAX));
+    len2 = _printf("% +d + %+ d = % +d\n", INT_MIN, INT_MAX, (INT_MIN + INT_MAX));
+    _printf("Len:[%d]\n", len);
+    printf("Len:[%d]\n", len2);
+    len = _printf("%");
+    len2 = printf("%");
     _printf("Len:[%d]\n", len);
     printf("Len:[%d]\n", len2);
     printf("---------------\n");

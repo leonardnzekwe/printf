@@ -10,6 +10,7 @@ int _printf(const char *format, ...)
 {
 	va_list args;
 	int count, num_args;
+	int fmt_len;
 	/* struct two dimensional array */
 	fmt fmt_specs[] = {{'c', char_print}, {'s', string_print}, {'d', dec_print},
 	{'i', int_print}, {'b', bin_print}, {'u', uint_print}, {'o', oct_print},
@@ -18,10 +19,15 @@ int _printf(const char *format, ...)
 
 	count = 0;
 	num_args = 0;
+	fmt_len = 0;
 	va_start(args, format);
 	if (format != NULL)
 	{
-		if (print_fmt(format, args, &count, &num_args, fmt_specs) != -1)
+		while (format[fmt_len] != '\0')
+		{
+			fmt_len++;
+		}
+		if (print_fmt(format, args, &count, &num_args, fmt_specs, fmt_len) != -1)
 		{
 			count = count;
 		}
@@ -41,11 +47,12 @@ int _printf(const char *format, ...)
  * @count: pointer to integer to store the count of characters printed
  * @num_args: number of argument passed to the variadic function
  * @fmt_specs: struct two dimensional array, typedefed to fmt
+ * @fmt_len: length of format string
  * Return: the number of characters printed
  */
 
-int print_fmt(const char *format,
-	va_list args, int *count, int *num_args, fmt fmt_specs[])
+int print_fmt(const char *format, va_list args,
+	int *count, int *num_args, fmt fmt_specs[], int fmt_len)
 {
 	int i, j;
 	char flag = '\0';
@@ -60,14 +67,11 @@ int print_fmt(const char *format,
 			/* check for flag characters */
 			if (format[i] == '+' || format[i] == ' ' || format[i] == '#')
 			{ flag = format[i];
-				i++; } /* check for standalone %, flag and if %, flag is the last char */
-			if (format[i] == '\0')
-			{
-				if (flag != '\0')
-				{ _putchar(flag);
-					(*count)++; }
-				_putchar(format[i]);
-				(*count)++; } /* search for corresponding conversion specifier */
+				i++; } /* check standalone %, flag and if %, flag is the last char */
+			if (i == fmt_len)
+			{ _putchar(format[i]);
+				(*count) = -1;
+				break; } /* search for corresponding conversion specifier */
 			for (j = 0; fmt_specs[j].fmt_sign != '\0'; j++)
 			{
 				if (format[i] == '%') /* print a percent sign */
