@@ -56,10 +56,11 @@ int main(void)
     _printf("Len:[%d]\n", len);
     printf("Len:[%d]\n", len2);
     printf("---------------\n");
-    len = _printf("% "); _printf("% % % % ");
-    len2 = printf("% "); printf("% % % % ");
+    len = _printf("% |\n"); _printf("% % % % |\n");
+    len2 = printf("% |\n"); printf("% % % % |\n");
     _printf("Len:[%d]\n", len);
     printf("Len:[%d]\n", len2);
+    printf("---------------\n");
     len = _printf("%#X\n", 0);
     len2 = printf("%#X\n", 0);
     _printf("Len:[%d]\n", len);

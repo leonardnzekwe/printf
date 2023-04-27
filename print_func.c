@@ -57,15 +57,17 @@ int print_fmt(const char *format,
 			(*count)++; }
 		else /* start fmt spec */
 		{ i++; /* increment to next character after the % */
-			/* check for standalone % and if % is the last character*/
-			if (format[i] == '\0')
-				{ (*count) = -1;
-					return (-1); }
 			/* check for flag characters */
 			if (format[i] == '+' || format[i] == ' ' || format[i] == '#')
 			{ flag = format[i];
-				i++; }
-			/* search for corresponding conversion specifier */
+				i++; } /* check for standalone %, flag and if %, flag is the last char */
+			if (format[i] == '\0')
+			{
+				if (flag != '\0')
+				{ _putchar(flag);
+					(*count)++; }
+				_putchar(format[i]);
+				(*count)++; } /* search for corresponding conversion specifier */
 			for (j = 0; fmt_specs[j].fmt_sign != '\0'; j++)
 			{
 				if (format[i] == '%') /* print a percent sign */
@@ -83,8 +85,6 @@ int print_fmt(const char *format,
 					break; }
 			}
 		}
-	}
-	if (*num_args != va_arg(args, int))
-		return (-1);
-	return (*count);
+	} /* check if the num of args specifiers processed == args passed */
+	return (*num_args == va_arg(args, int) ? (*count) : -1);
 }

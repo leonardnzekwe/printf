@@ -37,7 +37,7 @@ void oct_print(va_list args, int *count, char flag)
 		i++;
 	}
 	digits[i] = (num % 8) + '0';
-	if (flag == '#')
+	if (flag == '#' && num != 0)
 	{ _putchar('0');
 		(*count)++; }
 	/* print digits in reverse order */

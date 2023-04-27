@@ -38,7 +38,7 @@ void cap_hex_print(va_list args, int *count, char flag)
 		i++;
 	}
 	cap_hex_str[i] = cap_hex_digits[num % 16];
-	if (flag == '#')
+	if (flag == '#' && num != 0)
 	{ _putchar('0');
 		_putchar('X');
 		(*count) += 2; }

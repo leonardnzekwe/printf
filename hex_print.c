@@ -34,7 +34,7 @@ void hex_print(va_list args, int *count, char flag)
 		num = num / 16;
 		i++; }
 	hex_str[i] = hex_digits[num % 16];
-	if (flag == '#')
+	if (flag == '#' && num != 0)
 	{ _putchar('0');
 		_putchar('x');
 		(*count) += 2; }
