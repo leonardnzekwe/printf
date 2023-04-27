@@ -69,8 +69,7 @@ int print_fmt(const char *format, va_list args,
 			{ flag = format[i];
 				i++; } /* check standalone %, flag and if %, flag is the last char */
 			if (i == fmt_len)
-			{ _putchar(format[i]);
-				(*count) = -1;
+			{ (*count) = -1;
 				break; } /* search for corresponding conversion specifier */
 			for (j = 0; fmt_specs[j].fmt_sign != '\0'; j++)
 			{
