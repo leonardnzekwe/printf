@@ -12,10 +12,12 @@ int _printf(const char *format, ...)
 	int count, num_args;
 	int fmt_len;
 	/* struct two dimensional array */
-	fmt fmt_specs[] = {{'c', char_print}, {'s', string_print}, {'d', dec_print},
-	{'i', int_print}, {'b', bin_print}, {'u', uint_print}, {'o', oct_print},
-	{'x', hex_print}, {'X', cap_hex_print}, {'S', str_hex_print},
-	{'p', ptr_print}, {'\0', NULL}};
+	fmt fmt_specs[] = {
+		{'c', char_print}, {'s', string_print}, {'d', dec_print},
+		{'i', int_print}, {'b', bin_print}, {'u', uint_print},
+		{'o', oct_print}, {'x', hex_print}, {'X', cap_hex_print},
+		{'S', str_hex_print}, {'p', ptr_print}, {'\0', NULL}
+	};
 
 	count = 0;
 	num_args = 0;
@@ -53,7 +55,8 @@ int _printf(const char *format, ...)
 
 int print_fmt(const char *format, va_list args,
 	int *count, int *num_args, fmt fmt_specs[], int fmt_len)
-{ int i, j;
+{
+	int i;
 	char flag = '\0';
 
 	for (i = 0; format[i] != '\0'; i++)
@@ -62,35 +65,70 @@ int print_fmt(const char *format, va_list args,
 		{ _putchar(format[i]);
 			(*count)++; }
 		else /* start fmt spec */
-		{ i++; /* increment to next character after the % */
+		{
+			i++; /* increment to next character after the % */
 			/* check for flag characters */
 			if (format[i] == '+' || format[i] == '-' || format[i] == '#')
 			{ flag = format[i];
 				i++;
 				if (format[i] == ' ')
-					i++; }
+					i++;
+			}
 			else if (format[i] == ' ')
-			{ i++;
+			{
+				i++;
 				if (format[i] == '+' || format[i] == '-' || format[i] == '#')
 				{ flag = format[i];
-					i++; } }
-			if (i == fmt_len) /* check lone %, flag and if %, flag is the last char */
+					i++; }
+			}
+			/* check standalone %, flag and if %, flag is the last char */
+			if (i == fmt_len)
 			{ (*count) = -1;
-				break; } /* search for corresponding conversion specifier */
-			for (j = 0; fmt_specs[j].fmt_sign != '\0'; j++)
+				break; }
+			/* search for corresponding conversion specifier */
+			if (!handle_fmt_spec(format[i], args, count, num_args, fmt_specs, &flag))
 			{
-				if (format[i] == '%') /* print a percent sign */
-				{ _putchar(format[i]);
-					(*count)++;
-					break; }
-				else if (format[i] == (fmt_specs[j]).fmt_sign) /* valid fmt handling */
-				{ (*num_args)++; /* increment num_args when a valid fmt spec is found */
-					(fmt_specs[j]).fmt_func_ptr(args, count, flag);
-					break; }
-				else if (fmt_specs[j + 1].fmt_sign == '\0') /* invalid fmt handling */
-				{ _putchar('%');
-					_putchar(format[i]);
-					(*count) += 2;
-					break; } } }
-	} /* check if the num of args specifiers processed == args passed */
-	return (*num_args == va_arg(args, int) ? (*count) : -1); }
+				_putchar('%');
+				_putchar(format[i]);
+				(*count) += 2;
+			}
+		}
+	}
+	/* check if the num of args specifiers processed == args passed */
+	return (*num_args == va_arg(args, int) ? (*count) : -1);
+}
+
+/**
+ * handle_fmt_spec - search for corresponding conversion specifier
+ * @c: the format specifier
+ * @args: variable arguments list
+ * @count: pointer to integer to store the count of characters printed
+ * @num_args: number of argument passed to the variadic function
+ * @fmt_specs: struct two dimensional array, typedefed to fmt
+ * @flag: pointer to flag character
+ * Return: true if conversion specifier is found and handled, false otherwise
+ */
+
+bool handle_fmt_spec(char c, va_list args, int *count,
+	int *num_args, fmt fmt_specs[], char *flag)
+{
+	int j;
+
+	if (c == '%') /* print a percent sign */
+	{
+		_putchar(c);
+		(*count)++;
+		return (true);
+	}
+	for (j = 0; fmt_specs[j].fmt_sign != '\0'; j++)
+	{
+		if (c == fmt_specs[j].fmt_sign) /* valid fmt handling */
+		{
+			/* increment num_args when a valid fmt spec is found */
+			(*num_args)++;
+			fmt_specs[j].fmt_func_ptr(args, count, *flag);
+			return (true);
+		}
+	}
+	return (false); /* invalid fmt handling */
+}

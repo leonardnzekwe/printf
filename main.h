@@ -3,6 +3,7 @@
 #include <stdarg.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 /**
  * struct format_specifier - format specifier structure
@@ -33,5 +34,7 @@ void cap_hex_print(va_list args, int *count, char flag);
 void str_hex_print(va_list args, int *count, char flag);
 void ptr_print(va_list args, int *count, char flag);
 void zero(char *nil, int *count);
+bool handle_fmt_spec(char c, va_list args, int *count,
+int *num_args, fmt fmt_specs[], char *flag);
 
 #endif /* MAIN_H */
