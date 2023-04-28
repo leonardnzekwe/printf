@@ -40,7 +40,7 @@ void dec_print(va_list args, int *count, char flag)
 	else if (flag == '+')
 	{ _putchar('+');
 		(*count)++; }
-	else if (flag == ' ')
+	else if (flag == ' ' && d >= 0)
 	{ _putchar(' ');
 		(*count)++; }
 	/* print digits in reverse order */

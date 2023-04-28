@@ -53,8 +53,7 @@ int _printf(const char *format, ...)
 
 int print_fmt(const char *format, va_list args,
 	int *count, int *num_args, fmt fmt_specs[], int fmt_len)
-{
-	int i, j;
+{ int i, j;
 	char flag = '\0';
 
 	for (i = 0; format[i] != '\0'; i++)
@@ -65,10 +64,17 @@ int print_fmt(const char *format, va_list args,
 		else /* start fmt spec */
 		{ i++; /* increment to next character after the % */
 			/* check for flag characters */
-			if (format[i] == '+' || format[i] == ' ' || format[i] == '#')
+			if (format[i] == '+' || format[i] == '-' || format[i] == '#')
 			{ flag = format[i];
-				i++; } /* check standalone %, flag and if %, flag is the last char */
-			if (i == fmt_len)
+				i++;
+				if (format[i] == ' ')
+					i++; }
+			else if (format[i] == ' ')
+			{ i++;
+				if (format[i] == '+' || format[i] == '-' || format[i] == '#')
+				{ flag = format[i];
+					i++; } }
+			if (i == fmt_len) /* check lone %, flag and if %, flag is the last char */
 			{ (*count) = -1;
 				break; } /* search for corresponding conversion specifier */
 			for (j = 0; fmt_specs[j].fmt_sign != '\0'; j++)
@@ -85,9 +91,6 @@ int print_fmt(const char *format, va_list args,
 				{ _putchar('%');
 					_putchar(format[i]);
 					(*count) += 2;
-					break; }
-			}
-		}
+					break; } } }
 	} /* check if the num of args specifiers processed == args passed */
-	return (*num_args == va_arg(args, int) ? (*count) : -1);
-}
+	return (*num_args == va_arg(args, int) ? (*count) : -1); }
