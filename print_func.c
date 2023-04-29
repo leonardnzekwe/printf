@@ -58,6 +58,7 @@ int print_fmt(const char *format, va_list args,
 {
 	int i;
 	char flag = '\0';
+	char space = '\0';
 
 	for (i = 0; format[i] != '\0'; i++)
 	{
@@ -75,20 +76,19 @@ int print_fmt(const char *format, va_list args,
 					i++;
 			}
 			else if (format[i] == ' ')
-			{
+			{ space = format[i];
 				i++;
 				if (format[i] == '+' || format[i] == '-' || format[i] == '#')
 				{ flag = format[i];
 					i++; }
-			}
-			/* check standalone %, flag and if %, flag is the last char */
+			} /* check standalone %, flag and if %, flag is the last char */
 			if (i == fmt_len)
 			{ (*count) = -1;
 				break; }
 			/* search for corresponding conversion specifier */
-			if (!handle_fmt_spec(format[i], args, count, num_args, fmt_specs, &flag))
-			{
-				_putchar('%');
+			if (!handle_fmt_spec(format[i], args,
+				count, num_args, fmt_specs, &flag, &space))
+			{ _putchar('%');
 				_putchar(format[i]);
 				(*count) += 2;
 			}
@@ -100,33 +100,34 @@ int print_fmt(const char *format, va_list args,
 
 /**
  * handle_fmt_spec - search for corresponding conversion specifier
- * @c: the format specifier
+ * @fmt_char: the format specifier
  * @args: variable arguments list
  * @count: pointer to integer to store the count of characters printed
  * @num_args: number of argument passed to the variadic function
  * @fmt_specs: struct two dimensional array, typedefed to fmt
  * @flag: pointer to flag character
+ * @space: pointer to space character
  * Return: true if conversion specifier is found and handled, false otherwise
  */
 
-bool handle_fmt_spec(char c, va_list args, int *count,
-	int *num_args, fmt fmt_specs[], char *flag)
+bool handle_fmt_spec(char fmt_char, va_list args, int *count,
+	int *num_args, fmt fmt_specs[], char *flag, char *space)
 {
 	int j;
 
-	if (c == '%') /* print a percent sign */
+	if (fmt_char == '%') /* print a percent sign */
 	{
-		_putchar(c);
+		_putchar(fmt_char);
 		(*count)++;
 		return (true);
 	}
 	for (j = 0; fmt_specs[j].fmt_sign != '\0'; j++)
 	{
-		if (c == fmt_specs[j].fmt_sign) /* valid fmt handling */
+		if (fmt_char == fmt_specs[j].fmt_sign) /* valid fmt handling */
 		{
 			/* increment num_args when a valid fmt spec is found */
 			(*num_args)++;
-			fmt_specs[j].fmt_func_ptr(args, count, *flag);
+			fmt_specs[j].fmt_func_ptr(*flag, args, count, *space);
 			return (true);
 		}
 	}

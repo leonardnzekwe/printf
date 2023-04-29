@@ -2,13 +2,15 @@
 
 /**
  * cap_hex_print - hexadecimal (base 16) printing function (uppercase)
+ * @flag: flag characters for non-custom conversion specifiers
  * @args: variable argument list
  * @count: pointer to integer to store the count of characters printed
- * @flag: flag characters for non-custom conversion specifiers
+ * @space: space character for non-custom conversion specifiers
  * cap_hex - cap_hexadecimal (unsigned int) parameter passed
  */
 
-void cap_hex_print(va_list args, int *count, char flag)
+void cap_hex_print(char flag, va_list args,
+	int *count, char __attribute__ ((unused)) space)
 {
 	unsigned int cap_hex, i, cap_hex_len, num;
 	int j;

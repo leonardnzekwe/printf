@@ -2,13 +2,15 @@
 
 /**
  * ptr_print - print memory address in hexadecimal format
+ * @flag: flag characters for non-custom conversion specifiers
  * @args: variable argument list
  * @count: pointer to integer to store the count of characters printed
- * @flag: flag characters for non-custom conversion specifiers
+ * @space: space character for non-custom conversion specifiers
  * ptr - pointer (void *) parameter passed
  */
 
-void ptr_print(va_list args, int *count, char __attribute__ ((unused)) flag)
+void ptr_print(char __attribute__ ((unused)) flag, va_list args,
+	int *count, char __attribute__ ((unused)) space)
 {
 	unsigned long int ptr, ptr_value;
 	int i, j, ptr_len;

@@ -3,14 +3,15 @@
 /**
  * str_hex_print - prints a string
  * With non-printable characters as hexadecimal (uppercase)
- * @args: variadic arguments list
- * @count: pointer to the count of printed characters
  * @flag: flag characters for non-custom conversion specifiers
+ * @args: variable argument list
+ * @count: pointer to integer to store the count of characters printed
+ * @space: space character for non-custom conversion specifiers
  * str - string (char *) parameter passed
  */
 
-void str_hex_print(va_list args,
-	int *count, char __attribute__ ((unused)) flag)
+void str_hex_print(char __attribute__ ((unused)) flag, va_list args,
+	int *count, char __attribute__ ((unused)) space)
 {
 	char *str;
 	int i;

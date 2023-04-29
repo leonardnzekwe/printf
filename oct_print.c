@@ -2,13 +2,15 @@
 
 /**
  * oct_print - unsigned integer printing function in octal format
+ * @flag: flag characters for non-custom conversion specifiers
  * @args: variable argument list
  * @count: pointer to integer to store the count of characters printed
- * @flag: flag characters for non-custom conversion specifiers
+ * @space: space character for non-custom conversion specifiers
  * o - unsigned integer (unsigned int) parameter to print in octal format
  */
 
-void oct_print(va_list args, int *count, char flag)
+void oct_print(char flag, va_list args,
+	int *count, char __attribute__ ((unused)) space)
 {
 	unsigned int o, i, o_len, num;
 	int j;

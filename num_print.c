@@ -2,13 +2,14 @@
 
 /**
  * dec_print - decimal (base 10) printing function
+ * @flag: flag characters for non-custom conversion specifiers
  * @args: variable argument list
  * @count: pointer to integer to store the count of characters printed
- * @flag: flag characters for non-custom conversion specifiers
+ * @space: space character for non-custom conversion specifiers
  * d - decimal (int) parameter passed
  */
 
-void dec_print(va_list args, int *count, char flag)
+void dec_print(char flag, va_list args, int *count, char space)
 {
 	int d, i, j, d_len;
 	unsigned int num, abs_num;
@@ -40,7 +41,7 @@ void dec_print(va_list args, int *count, char flag)
 	else if (flag == '+')
 	{ _putchar('+');
 		(*count)++; }
-	else if (flag == ' ' && d >= 0)
+	else if (space == ' ' && d >= 0)
 	{ _putchar(' ');
 		(*count)++; }
 	/* print digits in reverse order */
@@ -55,10 +56,11 @@ void dec_print(va_list args, int *count, char flag)
  * @args: variable argument list
  * @count: pointer to integer to store the count of characters printed
  * @flag: flag characters for non-custom conversion specifiers
+ * @space: space character for non-custom conversion specifiers
  * i - integer (int) parameter to print
  */
 
-void int_print(va_list args, int *count, char flag)
+void int_print(char flag, va_list args, int *count, char space)
 {
-	dec_print(args, count, flag);
+	dec_print(flag, args, count, space);
 }

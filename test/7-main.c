@@ -13,6 +13,7 @@ int main(void)
     int len2;
     unsigned int ui;
     void *addr;
+    long int l = 1024;
 
     len = _printf("Let's try to printf a simple sentence.\n");
     len2 = printf("Let's try to printf a simple sentence.\n");
@@ -89,6 +90,27 @@ int main(void)
     printf("Len:[%d]\n", len2);
     len = _printf("% +d + %+ d = % +i\n", INT_MIN, INT_MAX, (INT_MIN + INT_MAX));
     len2 = printf("% +d + %+ d = % +i\n", INT_MIN, INT_MAX, (INT_MIN + INT_MAX));
+    _printf("Len:[%d]\n", len);
+    printf("Len:[%d]\n", len2);
+    printf("-------Failing Checks due to refactoring--------\n");
+    _printf("% i + % i = % i\n", INT_MIN, INT_MAX, (INT_MIN + INT_MAX));
+    printf("% i + % i = % i\n", INT_MIN, INT_MAX, (INT_MIN + INT_MAX));
+    _printf("Len:[%d]\n", len);
+    printf("Len:[%d]\n", len2);
+    _printf("% i - % i = % i\n", 1024, 2048, -1024);
+    printf("% i - % i = % i\n", 1024, 2048, -1024);
+    _printf("Len:[%d]\n", len);
+    printf("Len:[%d]\n", len2);
+    _printf("There is % i bytes in % i KB\n", 1024, 1);
+    printf("There is % i bytes in % i KB\n", 1024, 1);
+    _printf("Len:[%d]\n", len);
+    printf("Len:[%d]\n", len2);
+    _printf("% i\n", l); /* where l is a long int equals to INT_MIN - 1024 */
+    printf("% i\n", l); /* where l is a long int equals to INT_MIN - 1024 */
+    _printf("Len:[%d]\n", len);
+    printf("Len:[%d]\n", len2);
+    _printf("%+i\n", l); /* where l is a long int equals to INT_MAX + 1024 */
+    printf("%+i\n", l); /* where l is a long int equals to INT_MAX + 1024 */
     _printf("Len:[%d]\n", len);
     printf("Len:[%d]\n", len2);
     printf("---------------\n");
