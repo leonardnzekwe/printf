@@ -59,3 +59,4 @@ ALX SWE Printf Project
 - Looking at the `print_fmt` function, it could be noticed that we had to give up the aesthestic look of the code to comply to betty style rule for characters on a line not been more than 80 line and again function not been more than 40 lines. We had to divide function declaration into two lines and move some curly brackets fot the `if` statements same line as the `if` body.
 - Lastly, doing hard things is the right path to self developement, just as `task 7` states - _`The big print gives and the small print takes away`.
 - We hope to pass _`Sarcasm is lost in print` and reach _`The flood of print has turned reading into a process of gulping rather than savoring`
+- :)
