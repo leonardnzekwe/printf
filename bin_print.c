@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * bin_print - decimal (base 10) printing function
+ * bin_print - decimal (base 2) printing function
  * @flag: flag characters for non-custom conversion specifiers
  * @args: variable argument list
  * @count: pointer to integer to store the count of characters printed

@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * oct_print - unsigned integer printing function in octal format
+ * oct_print - unsigned integer printing function in octal format (base 8)
  * @flag: flag characters for non-custom conversion specifiers
  * @args: variable argument list
  * @count: pointer to integer to store the count of characters printed
