@@ -52,3 +52,10 @@ ALX SWE Printf Project
 ## Testing Directory
 
 **test:** contains all the main.c files for testing each task, the main.c files are series of edge cases for each of the function specification handling for tasks 0 to task 7. Also contains the compiled executable from the tests for task 0  to task 7.
+
+## Notes
+
+- We may continue to refactor the `_printf` completed tasks to me more modularised. For example in the print_func.c file, which contains the format printing of the functions, which are helper functions to the  `_printf` functions. On the bid to be complaint to betty style for function, not been more than 40 lines. We had to factor out the part of the `print_fmt` function that uses an `index` of the `format` string to search and match valid format specifiers, before calling it's `fmt_specs` struct member `fmt_func_ptr` . After which we realised the code is more modular that way, we attempted to factor out, the part that checks for the flags, but our tests kept failing for some edge case. This flag checking refactoring it underway.
+- Looking at the `print_fmt` function, it could be noticed that we had to give up the aesthestic look of the code to comply to betty style rule for characters on a line not been more than 80 line and again function not been more than 40 lines. We had to divide function declaration into two lines and move some curly brackets fot the `if` statements same line as the `if` body.
+- Lastly, doing hard things is the right path to self developement, just as `task 7` states - _`The big print gives and the small print takes away`.
+- We hope to pass _`Sarcasm is lost in print` and reach _`The flood of print has turned reading into a process of gulping rather than savoring`
