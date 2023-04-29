@@ -1,6 +1,6 @@
 # C - PRINTF
 
-Alx SWE Printf Project
+ALX SWE Printf Project
 
 ## Team
 
