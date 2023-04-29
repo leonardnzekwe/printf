@@ -32,18 +32,23 @@ Alx SWE Printf Project
 - [ ] **Task 15:** All the above options work well together.
 
 ## Files
-- main.h: contains the prototypes, structure of functions and structs.
-- \_putchar.c: contains `int _putchar(char c)` definition, for printing to standard output
+
+- **main.h:** contains the prototypes, structure of functions and structs.
+- **\_putchar.c:** contains `int _putchar(char c)` definition, for printing to standard output
 - print_func: contains `int _printf(const char *format, ...)` definition, for calling `_printf` function. Also contains helper function to the `_printf` function:
     - `int print_fmt(const char *format, va_list args, int *count, int *num_args, fmt fmt_specs[], int fmt_len)`, for format checking
     - `bool handle_fmt_spec(char fmt_char, va_list args, int *count, int *num_args, fmt fmt_specs[], char *flag, char *space)`, for searching for the corresponding conversion specifier and matching it with the right `fmt_spec` array dimension.
-- bin_print.c: contains `void bin_print(char __attribute__ ((unused)) flag, va_list args, int *count, char __attribute__ ((unused)) space)` definition, for handling binary printing (base 2).
-- cap_hex_print.c: contains `void cap_hex_print(char flag, va_list args, int *count, char __attribute__ ((unused)) space)` definition, for handling hexadecimal uppercase printing (base 16).
-- char_print.c: contains `void char_print(char __attribute__ ((unused)) flag, va_list args, int *count, char __attribute__ ((unused)) space)` definition, for handling character printing.
-- hex_print.c: contains `void hex_print(char flag, va_list args, int *count, char __attribute__ ((unused)) space)` definition, for handling hexadecimal lowercase printing (base 16).
-- num_print.c: contains `void dec_print(char flag, va_list args, int *count, char space)` && `void int_print(char flag, va_list args, int *count, char space)` definition, for handling integer and decimal (base 10) printing.
-- oct_print.c: contains `void oct_print(char flag, va_list args, int *count, char __attribute__ ((unused)) space)` definition, for handling unsigned integer printing in octal format (base 8).
-- contains `void ptr_print(char __attribute__ ((unused)) flag, va_list args, int *count, char __attribute__ ((unused)) space)` definition, for handling memory address printing in hexadecimal format. It has a helper function `void zero(char &nil, int *count)` for printing `nil` when `ptr` is 0.
-- str_hex_print.c: contains `void str_hex_print(char __attribute__ ((unused)) flag, va_list args,` definition, for printing a string With non-printable characters as hexadecimal (uppercase).
-- string_print.c: contains `void string_print(char __attribute__ ((unused)) flag, va_list args, int *count, char __attribute__ ((unused)) space)` definition, for printing strings.
-- uint_print.c: contains `void uint_print(char __attribute__ ((unused)) flag, va_list args, int *count, char __attribute__ ((unused)) space)` definition, for handling unsigned integer printing.
+- **bin_print.c:** contains `void bin_print(char __attribute__ ((unused)) flag, va_list args, int *count, char __attribute__ ((unused)) space)` definition, for handling binary printing (base 2).
+- **cap_hex_print.c:** contains `void cap_hex_print(char flag, va_list args, int *count, char __attribute__ ((unused)) space)` definition, for handling hexadecimal uppercase printing (base 16).
+- **char_print.c:** contains `void char_print(char __attribute__ ((unused)) flag, va_list args, int *count, char __attribute__ ((unused)) space)` definition, for handling character printing.
+- **hex_print.c:** contains `void hex_print(char flag, va_list args, int *count, char __attribute__ ((unused)) space)` definition, for handling hexadecimal lowercase printing (base 16).
+- **num_print.c:** contains `void dec_print(char flag, va_list args, int *count, char space)` && `void int_print(char flag, va_list args, int *count, char space)` definition, for handling integer and decimal (base 10) printing.
+- **oct_print.c:** contains `void oct_print(char flag, va_list args, int *count, char __attribute__ ((unused)) space)` definition, for handling unsigned integer printing in octal format (base 8).
+- **ptr_print.c:** contains `void ptr_print(char __attribute__ ((unused)) flag, va_list args, int *count, char __attribute__ ((unused)) space)` definition, for handling memory address printing in hexadecimal format. It has a helper function `void zero(char &nil, int *count)` for printing `nil` when `ptr` is 0.
+- **str_hex_print.c:** contains `void str_hex_print(char __attribute__ ((unused)) flag, va_list args, int *count, char __attribute__ ((unused)) space)` definition, for printing a string With non-printable characters as hexadecimal (uppercase).
+- **string_print.c:** contains `void string_print(char __attribute__ ((unused)) flag, va_list args, int *count, char __attribute__ ((unused)) space)` definition, for printing strings.
+- **uint_print.c:** contains `void uint_print(char __attribute__ ((unused)) flag, va_list args, int *count, char __attribute__ ((unused)) space)` definition, for handling unsigned integer printing.
+
+## Testing Directory
+
+**test:** contains all the main.c files for testing each task, the main.c files are series of edge cases for each of the function specification handling for tasks 0 to task 7. Also contains the compiled executable from the tests for task 0  to task 7.
