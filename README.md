@@ -1,6 +1,8 @@
 # C - PRINTF
 
-A Custom Implementation of C - Printf Function
+A Custom Implementation of C - Printf Function.
+
+An ALX SWE Project.
 
 ## Team
 
