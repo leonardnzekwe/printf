@@ -1,6 +1,6 @@
 # C - PRINTF
 
-ALX SWE Printf Project
+Custom Implementation of C - Printf Function
 
 ## Team
 
