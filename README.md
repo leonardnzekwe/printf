@@ -1,6 +1,6 @@
 # C - PRINTF
 
-Custom Implementation of C - Printf Function
+A Custom Implementation of C - Printf Function
 
 ## Team
 
